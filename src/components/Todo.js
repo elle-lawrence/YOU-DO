@@ -1,8 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from 'reactstrap';
+import styled from 'styled-components';
 import { deleteTodo, updateTodo } from '../api/data/todoData';
 
+const TodoStyle = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  h5 {
+    flex-grow: 2;
+    margin-left: 20px;
+  }
+
+  button {
+    color: white;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+`;
 export default function Todo({ todo, setTodos, setEditItem }) {
   const handleClick = (method) => {
     if (method === 'delete') {
@@ -16,7 +34,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
 
   return (
     <>
-      <Alert color="light">
+      <TodoStyle className="alert alert-light" role="alert">
         {todo.complete ? (
           'Done'
         ) : (
@@ -43,7 +61,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
         >
           DELETE
         </button>
-      </Alert>
+      </TodoStyle>
     </>
   );
 }
