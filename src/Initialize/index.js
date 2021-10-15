@@ -15,6 +15,11 @@ const Container = styled.div`
     font-size: 64px;
     font-weight: 400;
   }
+
+  h3 {
+    color: lightgrey;
+    text-align: center;
+  }
 `;
 
 function Initialize() {
