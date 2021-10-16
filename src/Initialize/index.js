@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import styled from 'styled-components';
 import { getTodos } from '../api/data/todoData';
-import Todo from '../components/Todo';
+import Navigation from '../components/Navigation';
 import TodoForm from '../components/TodoForms';
+import Routes from '../routes';
+import SignIn from '../views/SignIn';
 
 const Container = styled.div`
   width: 60%;
@@ -25,31 +29,44 @@ const Container = styled.div`
 function Initialize() {
   const [todos, setTodos] = useState([]);
   const [editItem, setEditItem] = useState({});
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    getTodos().then(setTodos);
+    firebase.auth().onAuthStateChanged((authed) => {
+      if (authed) {
+        // something to happen
+        const userInfoObj = {
+          fullName: authed.displayName,
+          profileImage: authed.photoURL,
+          uid: authed.uid,
+          user: authed.email.split('@')[0],
+        };
+        setUser(userInfoObj);
+        // TODO: Refactor code for users to only see their todos
+        getTodos(false).then(setTodos);
+      } else if (user || user === null) {
+        setUser(false);
+      }
+    });
   }, []);
 
   return (
-    <>
-      <Container>
-        <h1>YOU-DO</h1>
-        <TodoForm
-          obj={editItem}
-          setTodos={setTodos}
-          setEditItem={setEditItem}
-        />
-        {todos.map((todo) => (
-          <Todo
-            key={todo.firebaseKey}
-            todo={todo}
+    <Container>
+      {user ? (
+        <>
+          <Navigation />
+          <h1>YOU DO</h1>
+          <TodoForm
+            obj={editItem}
             setTodos={setTodos}
             setEditItem={setEditItem}
           />
-        ))}
-        ;
-      </Container>
-    </>
+          <Routes todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
+        </>
+      ) : (
+        <SignIn user={user} />
+      )}
+    </Container>
   );
 }
 
