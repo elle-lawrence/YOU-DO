@@ -7,8 +7,14 @@ export default function AllTodos({ todos, setTodos, setEditItem }) {
   const [allTodos, setAllTodos] = useState([]);
 
   useEffect(() => {
-    getAllTodos(todos).then(setAllTodos);
-  }, []);
+    let isMounted = true;
+    getAllTodos(todos).then((todoArray) => {
+      if (isMounted) setAllTodos(todoArray);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [todos]);
 
   return (
     <div>
