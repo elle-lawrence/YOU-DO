@@ -25,10 +25,10 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
   }, [obj]);
 
   const handleChange = (e) => {
-    // e.persist();
+    const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
@@ -56,19 +56,16 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
     <>
       <form onSubmit={handleSubmit}>
         <div className="mb-3 d-flex">
-          <label htmlFor="name">
-            Name:
-            <input
-              className="form-control form-control-lg me-1"
-              type="text"
-              name="name"
-              id="name"
-              value={formInput.name}
-              onChange={handleChange}
-              placeholder="ADD A YOU-DO"
-              required
-            />
-          </label>
+          <input
+            className="form-control form-control-lg me-1"
+            type="text"
+            name="name"
+            id="name"
+            value={formInput.name}
+            onChange={handleChange}
+            placeholder="ADD A YOU-DO"
+            required
+          />
           <button className="btn btn-success" type="submit">
             {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
           </button>
