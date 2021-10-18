@@ -34,7 +34,6 @@ function Initialize() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
-        // something to happen
         const userInfoObj = {
           fullName: authed.displayName,
           profileImage: authed.photoURL,
@@ -42,7 +41,6 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
-        // TODO: Refactor code for users to only see their todos
         getTodos(false).then(setTodos);
       } else if (user || user === null) {
         setUser(false);
