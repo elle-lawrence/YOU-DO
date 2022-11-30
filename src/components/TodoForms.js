@@ -68,9 +68,14 @@ export default function ToDoForm({ obj, setToDos, setEditItem }) {
             onChange={handleChange}
             placeholder="ADD A TO DO"
             required
+            style={{ fontFamily: 'Shadows Into Light', marginTop: '30px' }}
           />
-          <button className="btn btn-outline-success" type="submit">
-            {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+          <button
+            className="btn btn-outline-dark"
+            type="submit"
+            style={{ marginTop: '30px' }}
+          >
+            {obj.firebaseKey ? 'UPDATE' : 'ADD'}
           </button>
         </div>
       </form>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getAllToDos } from '../api/data/toDoData';
 import ToDo from '../components/ToDo';
 import CompletedToDo from '../components/CompletedToDo';
+import { PageHeader } from './Home';
 
 export default function AllToDos({ toDos, setToDos, setEditItem }) {
   const [allToDos, setAllToDos] = useState([]);
@@ -19,7 +20,7 @@ export default function AllToDos({ toDos, setToDos, setEditItem }) {
 
   return (
     <div>
-      <h3 style={{ color: 'grey' }}>ALL TO DOS</h3>
+      <PageHeader>ALL TO DOS</PageHeader>
       {allToDos.map((toDo) => (toDo.complete ? (
         <CompletedToDo
           key={toDo.firebaseKey}

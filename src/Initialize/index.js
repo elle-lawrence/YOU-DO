@@ -14,15 +14,19 @@ const Container = styled.div`
   padding: 50px 0;
 
   h1 {
-    color: white;
+    color: #d32326;
     text-align: center;
-    font-size: 64px;
-    font-weight: 400;
+    font-size: 104px;
+    font-family: 'Londrina Solid', cursive;
+    text-shadow: 2px 2px #540b0e;
   }
-
-  h3 {
-    color: lightgrey;
+  h2 {
+    color: grey;
     text-align: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 30px;
   }
 `;
 
@@ -52,8 +56,9 @@ function Initialize() {
     <Container>
       {user ? (
         <>
-          <Navigation />
           <h1>YOU DO</h1>
+          <h2>YOUR TO DO LIST</h2>
+          <Navigation />
           <ToDoForm
             obj={editItem}
             setToDos={setToDos}

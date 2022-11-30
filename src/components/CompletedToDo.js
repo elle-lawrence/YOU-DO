@@ -10,10 +10,13 @@ export const CompletedToDoStyle = styled.div`
   align-items: center;
   align-content: stretch;
 
-  h3 {
+  h3.toDoName {
     display: flex;
     flex-grow: 3;
     justify-content: flex-start;
+    font-family: 'Shadows Into Light', cursive;
+    color: #b1a7a6;
+    text-decoration: line-through;
   }
 
   button {
@@ -23,7 +26,21 @@ export const CompletedToDoStyle = styled.div`
       margin-right: 10px;
     }
   }
+  .compContainer {
+    display: flex;
+    min-width: 150px;
+    align-items: center;
+    align-content: stretch;
+
+    .doneMark {
+      font-size: 35px;
+      font-family: 'Londrina Solid', cursive;
+      color: #d32326;
+      margin-bottom: 0;
+    }
+  }
 `;
+
 export default function CompletedToDo({ toDo, setToDos }) {
   const handleClick = (method) => {
     if (method === 'delete') {
@@ -34,8 +51,10 @@ export default function CompletedToDo({ toDo, setToDos }) {
   return (
     <>
       <CompletedToDoStyle className="alert alert-light" role="alert">
-        <h3 style={{ color: 'red' }}>DONE!</h3>
-        <h3>{toDo.name}</h3>
+        <div className="compContainer">
+          <h4 className="doneMark">DONE!</h4>
+        </div>
+        <h3 className="toDoName">{toDo.name}</h3>
         <button
           onClick={() => handleClick('delete')}
           className="btn btn-outline-danger"

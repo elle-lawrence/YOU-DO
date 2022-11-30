@@ -9,10 +9,11 @@ export const ToDoStyle = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  .alertStyle h3 {
+  h3 {
     flex-grow: 2;
-    margin-left: 20px;
+    margin-left: 40px;
     color: grey;
+    font-family: 'Shadows Into Light', cursive;
   }
 
   button {
