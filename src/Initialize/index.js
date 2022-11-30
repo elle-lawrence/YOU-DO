@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import styled from 'styled-components';
-import { getToDos } from '../api/data/toDoData';
+import { getToDos } from '../api/data/toDosData';
 import Navigation from '../components/Navigation';
-import ToDoForm from '../components/ToDoForms';
+import ToDoForm from '../components/ToDoForm';
 import Routes from '../routes';
 import SignIn from '../views/SignIn';
 

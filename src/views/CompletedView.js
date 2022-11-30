@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getToDos } from '../api/data/toDoData';
+import { getToDos } from '../api/data/toDosData';
 import CompletedToDo from '../components/CompletedToDo';
 import { PageHeader } from './Home';
 // import { CompletedToDoStyle } from '../components/CompletedToDo';

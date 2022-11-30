@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { createToDo, updateToDo } from '../api/data/toDoData';
+import { createToDo, updateToDo } from '../api/data/toDosData';
 
 const initialState = {
   name: '',
