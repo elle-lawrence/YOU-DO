@@ -4,4 +4,4 @@
 
 React App To do list to manage all your tasks.
 
-<img width="1148" alt="Welcome Sign In" src="https://github.com/elle-lawrence/YOU-DO/blob/main/public/youDoApp.png?raw=true">
+<img width="1148" alt="To Do List" src="https://github.com/elle-lawrence/YOU-DO/blob/main/public/youDoApp.png?raw=true">
