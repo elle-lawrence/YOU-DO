@@ -20,7 +20,7 @@ export default function AllToDos({ toDos, setToDos, setEditItem }) {
 
   return (
     <div>
-      <PageHeader>ALL TO DOS</PageHeader>
+      <PageHeader>ALL TO DOS:</PageHeader>
       {allToDos.map((toDo) => (toDo.complete ? (
         <CompletedToDo
           key={toDo.firebaseKey}

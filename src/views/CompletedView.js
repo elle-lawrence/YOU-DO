@@ -17,7 +17,7 @@ export default function CompletedView() {
 
   return (
     <div>
-      <PageHeader>COMPLETED TO DOS</PageHeader>
+      <PageHeader>COMPLETED TO DOS:</PageHeader>
       {completedToDos.map((toDo) => (
         <CompletedToDo
           key={toDo.firebaseKey}
