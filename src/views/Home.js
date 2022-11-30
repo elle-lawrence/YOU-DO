@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Todo from '../components/Todo';
+import ToDo from '../components/ToDo';
 
-export default function Home({ todos, setTodos, setEditItem }) {
+export default function Home({ toDos, setToDos, setEditItem }) {
   return (
     <div>
-      {todos.map((todo) => (
-        <Todo
-          key={todo.firebaseKey}
-          todo={todo}
-          setTodos={setTodos}
+      {toDos.map((toDo) => (
+        <ToDo
+          key={toDo.firebaseKey}
+          toDo={toDo}
+          setToDos={setToDos}
           setEditItem={setEditItem}
         />
       ))}
@@ -18,7 +18,7 @@ export default function Home({ todos, setTodos, setEditItem }) {
 }
 
 Home.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTodos: PropTypes.func.isRequired,
+  toDos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setToDos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import styled from 'styled-components';
-import { getTodos } from '../api/data/todoData';
+import { getToDos } from '../api/data/toDoData';
 import Navigation from '../components/Navigation';
-import TodoForm from '../components/TodoForms';
+import ToDoForm from '../components/ToDoForms';
 import Routes from '../routes';
 import SignIn from '../views/SignIn';
 
@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 function Initialize() {
-  const [todos, setTodos] = useState([]);
+  const [toDos, setToDos] = useState([]);
   const [editItem, setEditItem] = useState({});
   const [user, setUser] = useState(null);
 
@@ -41,7 +41,7 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
-        getTodos(false).then(setTodos);
+        getToDos(false).then(setToDos);
       } else if (user || user === null) {
         setUser(false);
       }
@@ -54,12 +54,12 @@ function Initialize() {
         <>
           <Navigation />
           <h1>YOU DO</h1>
-          <TodoForm
+          <ToDoForm
             obj={editItem}
-            setTodos={setTodos}
+            setToDos={setToDos}
             setEditItem={setEditItem}
           />
-          <Routes todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
+          <Routes toDos={toDos} setToDos={setToDos} setEditItem={setEditItem} />
         </>
       ) : (
         <SignIn user={user} />

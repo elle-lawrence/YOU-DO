@@ -2,11 +2,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Completed from '../views/Completed';
 import Home from '../views/Home';
-import AllTodos from '../views/AllTodos';
+import AllToDos from '../views/AllToDos';
+import CompletedView from '../views/CompletedView';
 
-export default function Routes({ todos, setTodos, setEditItem }) {
+export default function Routes({ toDos, setToDos, setEditItem }) {
   return (
     <div>
       <Switch>
@@ -14,17 +14,17 @@ export default function Routes({ todos, setTodos, setEditItem }) {
           exact
           path="/"
           component={() => (
-            <Home todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
+            <Home toDos={toDos} setToDos={setToDos} setEditItem={setEditItem} />
           )}
         />
-        <Route exact path="/completed" component={Completed} />
+        <Route exact path="/completed" component={CompletedView} />
         <Route
           exact
           path="/alltodos"
           component={() => (
-            <AllTodos
-              todos={todos}
-              setTodos={setTodos}
+            <AllToDos
+              toDos={toDos}
+              setToDos={setToDos}
               setEditItem={setEditItem}
             />
           )}
@@ -35,7 +35,7 @@ export default function Routes({ todos, setTodos, setEditItem }) {
 }
 
 Routes.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTodos: PropTypes.func.isRequired,
+  toDos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setToDos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };

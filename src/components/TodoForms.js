@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { createTodo, updateTodo } from '../api/data/todoData';
+import { createToDo, updateToDo } from '../api/data/toDoData';
 
 const initialState = {
   name: '',
@@ -9,7 +9,7 @@ const initialState = {
   uid: '',
 };
 
-export default function TodoForm({ obj, setTodos, setEditItem }) {
+export default function ToDoForm({ obj, setToDos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const history = useHistory();
 
@@ -42,13 +42,13 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateTodo(formInput).then((todos) => {
-        setTodos(todos);
+      updateToDo(formInput).then((toDos) => {
+        setToDos(toDos);
         resetForm();
       });
     } else {
-      createTodo({ ...formInput, date: new Date() }).then((todos) => {
-        setTodos(todos);
+      createToDo({ ...formInput, date: new Date() }).then((toDos) => {
+        setToDos(toDos);
         resetForm();
         history.push('/');
       });
@@ -66,10 +66,10 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
             id="name"
             value={formInput.name}
             onChange={handleChange}
-            placeholder="ADD A YOU-DO"
+            placeholder="ADD A TO DO"
             required
           />
-          <button className="btn btn-success" type="submit">
+          <button className="btn btn-outline-success" type="submit">
             {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
           </button>
         </div>
@@ -78,7 +78,7 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
   );
 }
 
-TodoForm.propTypes = {
+ToDoForm.propTypes = {
   obj: PropTypes.shape({
     name: PropTypes.string,
     firebaseKey: PropTypes.string,
@@ -86,8 +86,8 @@ TodoForm.propTypes = {
     date: PropTypes.string,
     uid: PropTypes.string,
   }),
-  setTodos: PropTypes.func.isRequired,
+  setToDos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };
 
-TodoForm.defaultProps = { obj: {} };
+ToDoForm.defaultProps = { obj: {} };
