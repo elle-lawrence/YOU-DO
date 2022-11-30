@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Todo from '../components/Todo';
+import styled from 'styled-components';
+import ToDo from '../components/ToDo';
 
-export default function Home({ todos, setTodos, setEditItem }) {
+export const PageHeader = styled.div`
+  display: flex;
+  font-family: 'Londrina Solid', cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+  margin: 30px;
+  color: #ffb23f;
+  text-shadow: 2px 2px #d09337;
+`;
+export default function Home({ toDos, setToDos, setEditItem }) {
   return (
     <div>
-      {todos.map((todo) => (
-        <Todo
-          key={todo.firebaseKey}
-          todo={todo}
-          setTodos={setTodos}
+      <PageHeader>TO DOS:</PageHeader>
+      {toDos.map((toDo) => (
+        <ToDo
+          key={toDo.firebaseKey}
+          toDo={toDo}
+          setToDos={setToDos}
           setEditItem={setEditItem}
         />
       ))}
@@ -18,7 +30,7 @@ export default function Home({ todos, setTodos, setEditItem }) {
 }
 
 Home.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTodos: PropTypes.func.isRequired,
+  toDos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setToDos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };

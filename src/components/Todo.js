@@ -1,80 +1,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { deleteTodo, updateTodo } from '../api/data/todoData';
+import { deleteToDo, updateToDo } from '../api/data/toDoData';
 
-const TodoStyle = styled.div`
+export const ToDoStyle = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
 
-  h5 {
+  h3 {
     flex-grow: 2;
-    margin-left: 20px;
+    margin-left: 40px;
+    color: grey;
+    font-family: 'Shadows Into Light', cursive;
   }
 
   button {
-    color: white;
-
-    &:first-child {
-      margin-right: 10px;
-    }
+    color: light blue;
   }
 `;
-export default function Todo({ todo, setTodos, setEditItem }) {
+export default function ToDo({ toDo, setToDos, setEditItem }) {
   const handleClick = (method) => {
     if (method === 'delete') {
-      deleteTodo(todo.firebaseKey).then(setTodos);
+      deleteToDo(toDo.firebaseKey).then(setToDos);
     }
 
     if (method === 'complete') {
-      updateTodo({ ...todo, complete: true }).then(setTodos);
+      updateToDo({ ...toDo, complete: true }).then(setToDos);
     }
   };
 
   return (
     <>
-      <TodoStyle className="alert alert-light" role="alert">
-        {todo.complete ? (
-          'Done'
-        ) : (
+      <ToDoStyle className="alert alert-light alertStyle" role="alert">
+        <button
+          onClick={() => handleClick('complete')}
+          className="btn btn-outline-info"
+          type="button"
+        >
+          COMPLETE
+        </button>
+        <h3 style={{ color: 'grey' }}>{toDo.name}</h3>
+        <div className="btn-group" role="group" aria-label="Basic example">
           <button
-            onClick={() => handleClick('complete')}
-            className="btn btn-success"
+            onClick={() => setEditItem(toDo)}
+            className="btn btn-outline-info"
             type="button"
           >
-            COMPLETE
+            <i className="fas fa-edit" />
           </button>
-        )}
-        <h3>{todo.name}</h3>
-        <button
-          onClick={() => setEditItem(todo)}
-          className="btn btn-info"
-          type="button"
-        >
-          EDIT
-        </button>
-        <button
-          onClick={() => handleClick('delete')}
-          className="btn btn-danger"
-          type="button"
-        >
-          DELETE
-        </button>
-      </TodoStyle>
+          <button
+            onClick={() => handleClick('delete')}
+            className="btn btn-outline-danger"
+            type="button"
+          >
+            <i className="fas fa-trash-alt" />
+          </button>
+        </div>
+      </ToDoStyle>
     </>
   );
 }
 
-Todo.propTypes = {
-  todo: PropTypes.shape({
+ToDo.propTypes = {
+  toDo: PropTypes.shape({
     name: PropTypes.string,
     complete: PropTypes.bool,
     date: PropTypes.string,
     uid: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
-  setTodos: PropTypes.func.isRequired,
+  setToDos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };

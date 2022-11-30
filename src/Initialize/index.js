@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import styled from 'styled-components';
-import { getTodos } from '../api/data/todoData';
+import { getToDos } from '../api/data/toDoData';
 import Navigation from '../components/Navigation';
-import TodoForm from '../components/TodoForms';
+import ToDoForm from '../components/ToDoForms';
 import Routes from '../routes';
 import SignIn from '../views/SignIn';
 
@@ -14,20 +14,24 @@ const Container = styled.div`
   padding: 50px 0;
 
   h1 {
-    color: white;
+    color: #d32326;
     text-align: center;
-    font-size: 64px;
-    font-weight: 400;
+    font-size: 104px;
+    font-family: 'Londrina Solid', cursive;
+    text-shadow: 2px 2px #540b0e;
   }
-
-  h3 {
-    color: lightgrey;
+  h2 {
+    color: grey;
     text-align: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 30px;
   }
 `;
 
 function Initialize() {
-  const [todos, setTodos] = useState([]);
+  const [toDos, setToDos] = useState([]);
   const [editItem, setEditItem] = useState({});
   const [user, setUser] = useState(null);
 
@@ -41,7 +45,7 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
-        getTodos(false).then(setTodos);
+        getToDos(false).then(setToDos);
       } else if (user || user === null) {
         setUser(false);
       }
@@ -52,14 +56,15 @@ function Initialize() {
     <Container>
       {user ? (
         <>
-          <Navigation />
           <h1>YOU DO</h1>
-          <TodoForm
+          <h2>YOUR TO DO LIST</h2>
+          <Navigation />
+          <ToDoForm
             obj={editItem}
-            setTodos={setTodos}
+            setToDos={setToDos}
             setEditItem={setEditItem}
           />
-          <Routes todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
+          <Routes toDos={toDos} setToDos={setToDos} setEditItem={setEditItem} />
         </>
       ) : (
         <SignIn user={user} />

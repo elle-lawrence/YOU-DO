@@ -14,28 +14,28 @@ export default function Navigation() {
           onClick={() => history.push('/')}
           className="btn btn-light border border-dark"
         >
-          Home
+          To Do
         </button>
         <button
           type="button"
           onClick={() => history.push('/completed')}
           className="btn btn-light border border-dark"
         >
-          View Completed
+          Completed To Dos
         </button>
         <button
           type="button"
           onClick={() => history.push('/alltodos')}
           className="btn btn-light border border-dark"
         >
-          View All Todos
+          All To Dos
         </button>
         <button
           onClick={signOutUser}
           type="button"
           className="btn btn-danger border border-dark"
         >
-          Logout
+          <i className="fas fa-sign-out-alt" />
         </button>
       </ButtonGroup>
     </div>
