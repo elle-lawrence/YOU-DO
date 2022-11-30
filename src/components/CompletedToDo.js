@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { deleteToDo } from '../api/data/toDoData';
+import { deleteToDo } from '../api/data/toDosData';
 
 export const CompletedToDoStyle = styled.div`
   display: flex;

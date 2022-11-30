@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getAllToDos } from '../api/data/toDoData';
-import ToDo from '../components/ToDo';
+import { getAllToDos } from '../api/data/toDosData';
+import ToDo from '../components/ToDoAlert';
 import CompletedToDo from '../components/CompletedToDo';
 import { PageHeader } from './Home';
 

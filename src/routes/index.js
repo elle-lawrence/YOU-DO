@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
-import AllToDos from '../views/AllToDos';
+import AllToDos from '../views/AllToDosView';
 import CompletedView from '../views/CompletedView';
 
 export default function Routes({ toDos, setToDos, setEditItem }) {
