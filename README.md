@@ -2,6 +2,6 @@
 
 [See Live Demo of this Template](https://you-do-to-do-list.netlify.app/)
 
-React To do list to manage all your tasks.
+React App To do list to manage all your tasks.
 
 <img src="youDoApp.png" alt="thumb" />
