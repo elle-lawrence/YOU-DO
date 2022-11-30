@@ -4,4 +4,4 @@
 
 React To do list to manage all your tasks.
 
-<img src="youDoThumb.jpg" alt="thumb" />
+<img src="youDoApp.png" alt="thumb" />
